@@ -1,0 +1,132 @@
+body {
+	font-family: Arial, Hevetica, sans-serif
+}
+
+.boton {
+	background: black;
+	color: white;
+	display: inline-block;
+	padding: 10px 30px;
+	border-radius: 5px;
+	font-size: 16px;
+	text-decoration: none;
+	margin: 5px;
+}
+
+.boton-rojo {
+	@extend .boton;
+	background: red;
+}
+
+.boton-chico {
+	@extend .boton;
+	font-size: 14px;
+	padding: 5px 15px;
+}
+
+.boton-grande {
+	@extend .boton;
+	font-size: 20px;
+}
+
+.boton-linea {
+	@extend .boton;
+	background: none;
+	border: 1px solid #444;
+	color: #333;
+}
+
+.boton-x {
+	@extend .boton;
+	background: #456783;
+	transition: .5s;
+	&:hover {
+		background: darken(#456783, 15%);
+//		background: lighten(#456783, 15%);
+		transform: scale(1.1);
+	}
+}
+
+@mixin hacercirculos ($tamanio, $color) {
+	width: $tamanio;
+	height: $tamanio;
+	background: $color;
+	display: inline-block;
+	border-radius: 50%;
+}
+
+.circulo1 {
+	@include hacercirculos (100px, red)
+}
+
+.circulo2 {
+	@include hacercirculos (200px, green)
+}
+
+.circulo3 {
+	@include hacercirculos (150px, blue);
+}
+
+@mixin hacerboton ($color, $fondo, $radio, $paddingV, $paddingL, $tamanio) {
+	color: $color;
+	text-decoration: none;
+	background: $fondo;
+	display: inline-block;
+	border-radius: $radio;
+	padding: $paddingV $paddingL;
+	font-size: $tamanio;
+	transition: 1s;
+	&:hover {
+		transform: scale(1.1);
+		background: darken($color, 15%);
+	}
+}
+
+@mixin border-radius ($radio) {
+	-mox-boder-radius: $radio;
+	-o-boder-radius: $radio;
+	-ms-border-radius: $radio;
+	-webkit-border-radius: $radio;
+	border-radius: $radio;
+}
+
+@mixin text-shadow ($offsetv, $offseth, $blur, $color) {
+	-moz-text-shadow: $offsetv $offseth $blur  $color;
+	-o-text-shadow: $offsetv $offseth $blur  $color;
+	-ms-text-shadow: $offsetv $offseth $blur  $color;
+	-webkit-text-shadow: $offsetv $offseth $blur  $color;
+	text-shadow: $offsetv $offseth $blur  $color;
+}
+
+.circulo {
+	@include text-shadow(5px, 5px, 10px, rgba(0,0,0,0.5));
+	@include border-radius(50%);
+
+	background: red;
+	width: 100px;
+	height: 100px;
+}
+
+.boton-mx1 {
+	@include hacerboton (white, blue, 5px, 7px, 5px, 2r0px);
+}
+
+.boton-mx2 {
+	@include  hacerboton (white, green, 5px, 5px, 7px, 25px);
+}
+
+.boton-mx3 {
+	@include hacerboton (black, yellow, 5px, 10px, 30px, 30px);
+}
+
+.boton-mx4 {
+	@include hacerboton (white, #34578e, 5px, 10px, 30px, 20px);
+}
+
+.boton-mx5 {
+	@include  hacerboton (#455723, cyan, 3px, 5px, 30px, 18px);
+}
+
+.boton-mx6 {
+	@include hacerboton (#D3F455, #45D34E, 30px, 20px, 20px, 16px);
+}
